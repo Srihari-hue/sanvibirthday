@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Birthday Blessings</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  
+  <header class="hero">
+    <h1>💌 Leave Your Blessings for Saanvika</h1>
+    <p>Write your wishes and shower her with love!</p>
+
+    <form id="blessingForm">
+      <input type="text" id="name" placeholder="Your Name" required>
+      <textarea id="message" placeholder="Your Blessing..." required></textarea>
+      <button type="submit" class="btn">Send Blessing</button>
+    </form>
+    <p id="thankYouMessage" style="display: none; color: green; font-weight: bold; text-align: center;">
+  🎉 Thank you for your blessing!
+</p>
+
+    <div id="blessingsList" class="blessings-section"></div>
+
+    <div class="nav-buttons">
+      <a href="index.html" class="btn">Home</a>
+      <a href="about.html" class="btn">About</a>
+      <a href="gallery.html" class="btn">Gallery</a>
+      <a href="countdown.html" class="btn">Countdown</a>
+    </div>
+  </header>
+  <footer>
+    <p>Love written in words 💝</p>
+  </footer>
+
+
+
+  <div class="floating-decor">
+  <span>💖</span>
+  <span>🌟</span>
+  <span>💖</span>
+  <span>🌟</span>
+  <span>💖</span>
+
+  
+  <script>
+  const decor = document.querySelector(".floating-decor");
+  const emojis = ["💖", "🌟", "✨", "💫", "🎀"];
+  
+  function createFloating() {
+    const span = document.createElement("span");
+    span.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+    span.style.left = Math.random() * 100 + "vw";
+    span.style.animationDuration = 5 + Math.random() * 5 + "s";
+    decor.appendChild(span);
+    
+    setTimeout(() => {
+      span.remove();
+    }, 10000);
+  }
+
+  setInterval(createFloating, 700);
+</script>
+<script>
+  const form = document.getElementById('blessingForm');
+  const blessingsList = document.getElementById('blessingsList');
+  const messageArea = document.createElement('div');
+  form.parentNode.insertBefore(messageArea, blessingsList);
+
+  let blessings = JSON.parse(localStorage.getItem('blessings')) || [];
+
+  const displayBlessings = () => {
+    blessingsList.innerHTML = '';
+    blessings.forEach((b, i) => {
+      const el = document.createElement('div');
+      el.classList.add('blessing');
+      el.innerHTML = `
+        <strong>${b.name}:</strong>
+        <p>${b.message}</p>
+        <button onclick="deleteBlessing(${i})" style="background: red; color: white; border: none; padding: 2px 4px; border-radius: 5px; cursor: pointer;">Delete</button>
+      `;
+      blessingsList.appendChild(el);
+    });
+  };
+
+  const deleteBlessing = (index) => {
+    if (confirm("Are you sure you want to delete this blessing?")) {
+      blessings.splice(index, 1);
+      localStorage.setItem('blessings', JSON.stringify(blessings));
+      displayBlessings();
+    }
+  };
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    const name = document.getElementById('name').value.trim();
+    const message = document.getElementById('message').value.trim();
+    if (name && message) {
+      blessings.push({ name, message });
+      localStorage.setItem('blessings', JSON.stringify(blessings));
+      form.reset();
+      displayBlessings();
+
+      // Show thank you message and gift button
+      messageArea.innerHTML = `
+        <div style="margin-top: 20px; background: #e6ffe6; padding: 15px; border-radius: 10px; text-align: center;">
+          <p style="font-size: 1.1em; color: green;">🎉 Thank you for your blessing!</p>
+          <a href="https://www.amazon.in/s?k=toys+for+1+year%2B+old+girl&crid=2QC5BB8A414XL&sprefix=toys+for+1+year%2Caps%2C227&ref=nb_sb_ss_mvt-t11-ranker_2_15" target="_blank" style="display: inline-block; margin-top: 10px; padding: 10px 20px; background-color: #ff69b4; color: white; text-decoration: none; border-radius: 8px;">🎁 Buy a Gift for Saanvika</a>
+        </div>
+      `;
+    }
+  });
+  displayBlessings();
+</script>
+
+
+</div>
+</html>

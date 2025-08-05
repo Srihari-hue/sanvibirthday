@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About Saanvika</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="hero">
+    <h1>👑 Meet Princess Saanvika</h1>
+    <p>Born on August 11, 2024 — a little star who filled our world with joy!</p>
+    <img src="assets/ChatGPT Image Aug 5, 2025, 02_15_00 PM.png " alt="Baby Saanvika" class="princess-img">
+
+    <div class="about-section">
+      <h2>Fun Facts ✨</h2>
+      <ul>
+        <li>👶 First word: "Thatha"</li>
+        <li>🧸 Favorite toy: Pink teddy bear</li>
+        <li>🎵 Loves to dance to lullabies</li>
+        <li>🍌 Favorite food: Boiled Egg</li>
+        <li>🐾 Crawls faster than a bunny!</li>
+      </ul>
+    </div>
+
+    <div class="nav-buttons">
+      <a href="index.html" class="btn">Home</a>
+      <a href="gallery.html" class="btn">Gallery</a>
+      <a href="blessings.html" class="btn">Blessings</a>
+      <a href="countdown.html" class="btn">Countdown</a>
+    </div>
+  </header>
+
+  <footer>
+    <p>With every giggle, she brightens the world 🌈</p>
+  </footer>
+
+</body>
+<div class="floating-decor">
+  <span>💖</span>
+  <span>🌟</span>
+  <span>💖</span>
+  <span>🌟</span>
+  <span>💖</span>
+
+  <script>
+  const decor = document.querySelector(".floating-decor");
+  const emojis = ["💖", "🌟", "✨", "💫", "🎀"];
+  
+  function createFloating() {
+    const span = document.createElement("span");
+    span.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+    span.style.left = Math.random() * 100 + "vw";
+    span.style.animationDuration = 5 + Math.random() * 5 + "s";
+    decor.appendChild(span);
+    
+    setTimeout(() => {
+      span.remove();
+    }, 10000);
+  }
+
+  setInterval(createFloating, 700);
+</script>
+
+</div>
+</html>

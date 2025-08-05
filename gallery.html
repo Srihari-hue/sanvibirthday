@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Saanvika's Gallery</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="hero">
+    <h1>📸 Moments with Princess Saanvika</h1>
+    <p>A collection of magical memories from her first year!</p>
+
+    <div class="gallery-grid">
+      <img src="assets/image1.jpeg" alt="Saanvika 1">
+      <img src="assets/image2.jpeg" alt="Saanvika 2">
+      <img src="assets/image3.jpeg" alt="Saanvika 3">
+      <img src="assets/image4.jpeg" alt="Saanvika 4">
+      <img src="assets/image5.jpeg" alt="Saanvika 5">
+      <img src="assets/image6.jpeg" alt="Saanvika 6">
+      <img src="assets/image7.jpeg" alt="Saanvika 6">
+      <img src="assets/image8.jpeg" alt="Saanvika 6">
+      <img src="assets/image9.jpeg" alt="Saanvika 6">
+      <img src="assets/image10.jpeg" alt="Saanvika 6">
+    </div>
+    <div class="nav-buttons">
+      <a href="index.html" class="btn">Home</a>
+      <a href="about.html" class="btn">About</a>
+      <a href="blessings.html" class="btn">Blessings</a>
+      <a href="countdown.html" class="btn">Countdown</a>
+    </div>
+  </header>
+
+  <footer>
+    <p>Every picture tells a story… 💫</p>
+  </footer>
+</body>
+<div class="floating-decor">
+  <span>💖</span>
+  <span>🌟</span>
+  <span>💖</span>
+  <span>🌟</span>
+  <span>💖</span>
+
+  
+  <script>
+  const decor = document.querySelector(".floating-decor");
+  const emojis = ["💖", "🌟", "✨", "💫", "🎀"];
+  
+  function createFloating() {
+    const span = document.createElement("span");
+    span.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+    span.style.left = Math.random() * 100 + "vw";
+    span.style.animationDuration = 5 + Math.random() * 5 + "s";
+    decor.appendChild(span);
+    
+    setTimeout(() => {
+      span.remove();
+    }, 10000);
+  }
+
+  setInterval(createFloating, 700);
+</script>
+
+</div>
+</html>
